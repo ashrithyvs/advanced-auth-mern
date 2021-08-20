@@ -1,8 +1,10 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
-require("dotenv").config();
+require("dotenv").config({ path: "./.env.local" });
+
 connectDB();
+
 const app = express();
 
 app.use(express.json());
