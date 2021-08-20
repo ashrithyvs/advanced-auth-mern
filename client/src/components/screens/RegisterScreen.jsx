@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
 
 function RegisterScreen({ history }) {
   const [username, setUsername] = useState("");
@@ -39,58 +40,71 @@ function RegisterScreen({ history }) {
   };
 
   return (
-    <div>
-      <form onSubmit={registerHandler} className="d-flex flex-column w-25">
-        <h3>Register</h3>
+    <Container className="w-25 mx-auto my-5">
+      <h2 className="text-center mb-4">Register</h2>
+      <Form onSubmit={registerHandler}>
         {error && <span>{error}</span>}
-        <input
-          required
-          id="name"
-          type="text"
-          placeholder="Enter username"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <input
-          required
-          id="email"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          required
-          id="password"
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          required
-          id="cpassword"
-          type="password"
-          placeholder="Confirm password"
-          value={cpassword}
-          onChange={(e) => {
-            setCPassword(e.target.value);
-          }}
-        />
-        <button type="submit" className="btn btn-primary">
+        <Form.Group className="mb-3">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            required
+            id="name"
+            type="text"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            required
+            id="email"
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            required
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            required
+            id="cpassword"
+            type="password"
+            placeholder="Confirm password"
+            value={cpassword}
+            onChange={(e) => {
+              setCPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
           Submit
-        </button>
-        <span>
+        </Button>
+        <p className="mt-3 text-muted">
           Already have an account?<Link to="/login">Login</Link>
-        </span>
-      </form>
-    </div>
+        </p>
+      </Form>
+    </Container>
   );
 }
 

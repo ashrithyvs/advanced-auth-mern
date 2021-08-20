@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
 
 function ResetPasswordScreen({ match }) {
   const [password, setPassword] = useState("");
@@ -36,41 +37,48 @@ function ResetPasswordScreen({ match }) {
   };
 
   return (
-    <>
-      <form onSubmit={resetpassHandler} className="d-flex flex-column w-25">
+    <Container className="w-25 mx-auto my-5">
+      <Form onSubmit={resetpassHandler}>
         <h3>Reset Password</h3>
         {error && <span>{error}</span>}
         {success && <span>{success}</span>}
-        <input
-          required
-          id="password"
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <input
-          required
-          id="cpassword"
-          type="password"
-          placeholder="Confirm password"
-          value={cpassword}
-          onChange={(e) => {
-            setCPassword(e.target.value);
-          }}
-        />
-        <button type="submit" className="btn btn-primary">
+
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            required
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            required
+            id="cpassword"
+            type="password"
+            placeholder="Confirm password"
+            value={cpassword}
+            onChange={(e) => {
+              setCPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Button type="submit" className="btn btn-primary">
           Change Password
-        </button>
+        </Button>
         {success && (
-          <span>
+          <p className="mt-3 text-muted">
             Wanna go to login page?<Link to="/login">Login</Link>
-          </span>
+          </p>
         )}
-      </form>
-    </>
+      </Form>
+    </Container>
   );
 }
 

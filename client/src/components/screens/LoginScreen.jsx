@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
 
 function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
@@ -33,42 +34,50 @@ function LoginScreen({ history }) {
   };
 
   return (
-    <div>
-      <form onSubmit={loginHandler} className="d-flex flex-column w-25">
-        <h3>Login</h3>
-        {error && <span>{error}</span>}
+    <Container className="w-25 mx-auto my-5">
+      <h2 className="text-center mb-4">Login</h2>
+      {error && <span>{error}</span>}
+      <Form onSubmit={loginHandler}>
+        <Form.Group className="mb-3">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            required
+            id="email"
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </Form.Group>
 
-        <input
-          required
-          id="email"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <input
-          required
-          id="password"
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button type="submit" className="btn btn-primary">
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            required
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
           Submit
-        </button>
-        <span>
-          Don't have an account?<Link to="/register">Register</Link>
-        </span>
-        <span>
-          Forgot Password?<Link to="/forgotpassword">Click here!</Link>
-        </span>
-      </form>
-    </div>
+        </Button>
+        <div className="mt-3">
+          <p className="text-muted">
+            Don't have an account?<Link to="/register"> Register</Link>
+          </p>
+          <p className="text-muted">
+            Forgot Password?<Link to="/forgotpassword"> Click here!</Link>
+          </p>
+        </div>
+      </Form>
+    </Container>
   );
 }
 

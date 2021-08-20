@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Button, Container } from "react-bootstrap";
 function PrivateScreen({ history }) {
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
@@ -34,13 +35,13 @@ function PrivateScreen({ history }) {
   };
 
   return (
-    <>
+    <Container className="mx-auto w-50 my-5">
       {error && <span>{error}</span>}
       <div>
-        <span>{privateData}</span>
-        <button onClick={logoutHandler}>Logout</button>
+        <h3>{privateData}</h3>
+        <Button onClick={logoutHandler}>Logout</Button>
       </div>
-    </>
+    </Container>
   );
 }
 

@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PrivateRoute from "./components/routing/PrivateRoute";
