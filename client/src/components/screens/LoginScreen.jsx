@@ -21,7 +21,7 @@ function LoginScreen({ history }) {
 
     try {
       const { data } = await axios.post(
-        "/api/auth/login",
+        "https://adv-auth-mern.herokuapp.com/api/auth/login",
         { email, password },
         config
       );
