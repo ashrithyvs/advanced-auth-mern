@@ -26,7 +26,7 @@ function RegisterScreen({ history }) {
 
     try {
       const { data } = await axios.post(
-        "/api/auth/register",
+        "https://adv-auth-mern.herokuapp.com/api/auth/register",
         { username, email, password },
         config
       );

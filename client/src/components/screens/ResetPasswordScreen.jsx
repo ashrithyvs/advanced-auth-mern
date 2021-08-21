@@ -25,7 +25,7 @@ function ResetPasswordScreen({ match }) {
     const config = { header: { "Content-Type": "application/json" } };
     try {
       const { data } = await axios.put(
-        `/api/auth/resetpassword/${match.params.resetToken}`,
+        `https://adv-auth-mern.herokuapp.com/api/auth/resetpassword/${match.params.resetToken}`,
         { password },
         config
       );

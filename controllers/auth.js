@@ -43,7 +43,7 @@ const forgotPassword = async (req, res, next) => {
 
     await user.save();
 
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrl = `https://advanced-auth-mern.vercel.app/passwordreset/${resetToken}`;
     const message = `<h1>You have requested a new password reset</h1><p>Please go to this link to reset your password</p><a href=${resetUrl} clicktracking=off>${resetUrl}</a>`;
 
     try {

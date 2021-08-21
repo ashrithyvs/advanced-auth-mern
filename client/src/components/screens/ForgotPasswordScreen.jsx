@@ -20,7 +20,7 @@ function ForgotPasswordScreen({ history }) {
     const config = { header: { "Content-Type": "application/json" } };
     try {
       const { data } = await axios.post(
-        "/api/auth/forgotpassword",
+        "https://adv-auth-mern.herokuapp.com/api/auth/forgotpassword",
         { email },
         config
       );
